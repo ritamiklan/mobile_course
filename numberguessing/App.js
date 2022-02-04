@@ -8,21 +8,26 @@ export default function App() {
   const [randomNr, setRandomNr] = useState(0);
   const [guess, setGuess] = useState('');
   const [msg, setMsg] = useState('');
+  let [counter, setCounter] = useState(0);
 
   useEffect(() => {
     setRandomNr(Math.floor(Math.random() * 100) + 1);
   }, []);
-  
-  console.log(randomNr);
-  console.log(guess);
 
   const checkGuess = () => {
-    if (randomNr > guess ) {
+    if (randomNr > parseInt(guess)) {
+      setGuess('');
+      counter++;
+      setCounter(counter);
       return setMsg("Guess too small")
-    } else if (randomNr < guess) {
+    } else if (randomNr < parseInt(guess)) {
+      setGuess('');
+      counter++;
+      setCounter(counter);
       return setMsg("Guess too big")
     } else {
-      return setMsg("You guessed the nr!")
+      setGuess('');
+      return setMsg(`You guessed the number in ${counter} tries!`);
     }
   }
 
@@ -53,7 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   input: {
-    width:200, 
+    width: 200, 
     borderColor:'gray', 
     borderWidth:1
   }
