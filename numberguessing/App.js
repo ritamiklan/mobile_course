@@ -7,6 +7,7 @@ export default function App() {
 
   const [randomNr, setRandomNr] = useState(0);
   const [guess, setGuess] = useState('');
+  const [msg, setMsg] = useState('');
 
   useEffect(() => {
     setRandomNr(Math.floor(Math.random() * 100) + 1);
@@ -16,7 +17,13 @@ export default function App() {
   console.log(guess);
 
   const checkGuess = () => {
-    console.log("This button works");
+    if (randomNr > guess ) {
+      return setMsg("Guess too small")
+    } else if (randomNr < guess) {
+      return setMsg("Guess too big")
+    } else {
+      return setMsg("You guessed the nr!")
+    }
   }
 
   return (
@@ -32,6 +39,7 @@ export default function App() {
         onPress = {checkGuess}
         title = "Make a guess"
         />
+        <Text>{msg}</Text>
       <StatusBar style="auto" />
     </View>
   );
