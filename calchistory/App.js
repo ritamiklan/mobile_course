@@ -62,6 +62,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  input: {
+    width:200, 
+    borderColor:'gray', 
+    borderWidth:1
+  },
   buttonContainer: {
       flex: 1,
       width: 100,
@@ -73,9 +78,5 @@ const styles = StyleSheet.create({
   alertText: {
     fontSize: 18
   },
-  input: {
-    width:200, 
-    borderColor:'gray', 
-    borderWidth:1
-  }
+ 
 });
