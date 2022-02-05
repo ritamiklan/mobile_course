@@ -49,7 +49,6 @@ export default function App() {
         renderItem = {({item}) => <Text>{item}</Text> }
         keyExtractor = {(item, index) => index}
         />
-
       </View>
       <StatusBar style='auto'/>
     </View>
@@ -63,7 +62,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   buttonContainer: {
       flex: 1,
       width: 100,
