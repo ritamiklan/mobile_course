@@ -9,14 +9,16 @@ export default function App() {
   const [data, setData] = useState([]);
 
   const addNumbers = () => {
-    setResult(parseFloat(num1) + parseFloat(num2))
-    let history = `${num1} + ${num2} = ${parseFloat(num1) + parseFloat(num2)}`;
+    let res1 = parseFloat(num1) + parseFloat(num2)
+    let history = `${num1} + ${num2} = ${res1}`
+    setResult(res1)
     setData([history, ...data])
   }
 
   const substractNumbers = () => {
-    setResult(parseFloat(num1) - parseFloat(num2))
-    let history2 = `${num1} - ${num2} = ${parseFloat(num1) - parseFloat(num2)}`;
+    let res2 = parseFloat(num1) - parseFloat(num2)
+    let history2 = `${num1} - ${num2} = ${res2}`
+    setResult(res2)
     setData([history2, ...data])
   }
 
