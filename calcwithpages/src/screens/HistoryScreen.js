@@ -1,13 +1,31 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 
-export default function HistoryScreen() {
+export default function HistoryScreen({ route }) {
+
+const { data } = route.params;
 
     return(
-        <View>
-            <Text>History screen</Text>
+        <View style = {styles.container}>
+            <Text style = {styles.largeText}>History screen</Text>
+                <FlatList 
+                    data = {data}
+                    renderItem = {({item}) => <Text>{item}</Text> }
+                    keyExtractor = {(item, index) => index}
+                />
         </View>
     );
 }
+
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: '#fff',
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+        largeText: {
+            margin: 20,
+            fontSize: 20,
+        }
+    });

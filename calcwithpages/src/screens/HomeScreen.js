@@ -23,51 +23,51 @@ export default function HomeScreen({ navigation }) {
         setData([history2, ...data])
       }
 
-return (
-    <View style={styles.container}>
+    return (
         <View style={styles.container}>
-            <Text>Result: {result}</Text>
-                <TextInput
-                    keyboardType = 'numeric'
-                    value = {num1}
-                    onChangeText = {txt => setNum1(txt)}
-                    style={styles.input}
-                />
-                <TextInput
-                    keyboardType = 'numeric'
-                    value = {num2}
-                    onChangeText = {txt => setNum2(txt)}
-                    style={styles.input}
-                />
+            <View style={styles.container}>
+                <Text>Result: {result}</Text>
+                    <TextInput
+                        keyboardType = 'numeric'
+                        value = {num1}
+                        onChangeText = {txt => setNum1(txt)}
+                        style={styles.input}
+                    />
+                    <TextInput
+                        keyboardType = 'numeric'
+                        value = {num2}
+                        onChangeText = {txt => setNum2(txt)}
+                        style={styles.input}
+                    />
+            </View>
+            <View style = {styles.buttonContainer}>
+                <Button title = '+' onPress={addNumbers}/>
+                <Button title = '-' onPress={substractNumbers}/>
+                <Button title = 'History' onPress={() => navigation.navigate('History', {data})} />
+            </View>
+            <StatusBar style="auto" />
         </View>
-        <View style = {styles.buttonContainer}>
-            <Button title = '+' onPress={addNumbers}/>
-            <Button title = '-' onPress={substractNumbers}/>
-            <Button title = 'History' onPress={() => navigation.navigate('History')} />
-        </View>
-        <StatusBar style="auto" />
-    </View>
-    )
-}
+        )
+    }
 
-    const styles = StyleSheet.create({
-        container: {
-          flex: 1,
-          backgroundColor: '#fff',
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
-        input: {
-          width: 200,
-          borderColor: 'gray',
-          borderWidth: 1
-        },
-        buttonContainer: {
-          flex: 1,
-          flexDirection: 'row',
-          width: 200,
-          backgroundColor: '#fff',
-          alignItems: 'flex-start',
-          justifyContent: 'space-around',
-        }
-      });
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    input: {
+        width: 200,
+        borderColor: 'gray',
+        borderWidth: 1
+    },
+    buttonContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        width: 200,
+        backgroundColor: '#fff',
+        alignItems: 'flex-start',
+        justifyContent: 'space-around',
+    }
+    });
