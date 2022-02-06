@@ -14,6 +14,8 @@ export default function HomeScreen({ navigation }) {
         let history = `${num1} + ${num2} = ${res1}`
         setResult(res1)
         setData([history, ...data])
+        setNum1('')
+        setNum2('')
       }
     
       const substractNumbers = () => {
@@ -21,6 +23,8 @@ export default function HomeScreen({ navigation }) {
         let history2 = `${num1} - ${num2} = ${res2}`
         setResult(res2)
         setData([history2, ...data])
+        setNum1('')
+        setNum2('')
       }
 
     return (
