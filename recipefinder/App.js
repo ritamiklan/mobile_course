@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     flex: 4,
     width: 350,
     backgroundColor: '#fff',
-    alignItems: 'flex-start',
+    alignItems: 'stretch',
     justifyContent: 'flex-start',
   },
   input: {
