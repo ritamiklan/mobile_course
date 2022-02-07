@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, FlatList, Image } from 'react-native';
 import React, { useState } from 'react';
 
 export default function App() {
@@ -29,10 +29,18 @@ export default function App() {
           onPress = {getRecipes}
         />
       </View>
-      <View style = {styles.container}>
+      <View style = {styles.container2}>
         <FlatList 
           data = {recipes}
-          renderItem={({item}) => <Text>{item.strMeal}</Text>}
+          renderItem={({item}) => 
+            <View>
+              <Text>{item.strMeal}</Text>
+              <Image
+                style={{ width: 50, height: 50 }} 
+                source={{ uri: `${item.strMealThumb}` }} 
+              />
+            </View>
+          }
           keyExtractor = {(item, index) => index}
         />
       </View>
@@ -48,6 +56,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  container2: {
+    flex: 4,
+    width: 350,
+    backgroundColor: '#fff',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
   input: {
     width: 200,
     borderWidth: 1,
@@ -55,10 +70,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
-    width: 200,
+    width: 400,
     flexDirection: 'row',
     backgroundColor: '#fff',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'space-around',
   }
 });
