@@ -9,6 +9,13 @@ import config from "./config";
 
 export default function App() {
   const [location, setLocation] = useState(null);
+
+  const [region, setRegion] = useState({
+    latitude: 60.200692,
+    longitude: 24.934302,
+    latitudeDelta: 0.0322,
+    longitudeDelta: 0.0221,
+  });
   // region state, region prop
   // text input
   // press button: find coordinates, update reagon state
@@ -37,11 +44,18 @@ export default function App() {
         onPress={(data, details = null) => {
           // 'details' is provided when fetchDetails = true
           console.log(data, details);
+          setRegion({
+            latitude: details.geometry.location.lat,
+            longitude: details.geometry.location.lng,
+            latitudeDelta: 0.0322,
+            longitudeDelta: 0.0221,
+          });
         }}
         query={{
           key: config.MAP_API_KEY,
           language: "en",
           components: "country:fi",
+          location: `${region.latitude}, ${region.longitude}`,
         }}
         styles={{
           container: { flex: 0 },
@@ -50,18 +64,19 @@ export default function App() {
       />
       <MapView
         style={{ flex: 1 }}
-        // Note! Use region prop instead of initialRegion when having region in state(dynamic map).
-        initialRegion={{
-          latitude: 60.200692,
-          longitude: 24.934302,
-          latitudeDelta: 0.0322,
-          longitudeDelta: 0.0221,
+        region={{
+          latitude: region.latitude,
+          longitude: region.longitude,
+          latitudeDelta: region.latitudeDelta,
+          longitudeDelta: region.longitudeDelta,
         }}
         provider="google"
       >
         <Marker
-          coordinate={{ latitude: 60.201373, longitude: 24.934041 }}
-          title="Haaga-Helia"
+          coordinate={{
+            latitude: region.latitude,
+            longitude: region.longitude,
+          }}
         />
       </MapView>
     </View>
