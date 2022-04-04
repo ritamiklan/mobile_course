@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import React, { useState, useEffect } from "react";
-import { Alert } from "react-native-web";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import config from "./config";
 import Constants from "expo-constants";
@@ -25,12 +24,6 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      if (Platform.OS === "android" && !Constants.isDevice) {
-        setErrorMsg(
-          "Oops, this will not work on Snack in an Android emulator. Try it on your device!"
-        );
-        return;
-      }
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
         setErrorMsg("Permission to access location was denied");
@@ -38,16 +31,16 @@ export default function App() {
       }
 
       let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
+      setLocation({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        latitudeDelta: 0.0322,
+        longitudeDelta: 0.0221,
+      });
+      console.log(location.coords.latitude); // this works it seems
+      console.log(location.coords.longitude);
     })();
   }, []);
-
-  let text = "Waiting..";
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
 
   return (
     <View style={{ marginTop: 20, flex: 1 }}>
@@ -59,7 +52,7 @@ export default function App() {
         }}
         onPress={(data, details = null) => {
           // 'details' is provided when fetchDetails = true
-          console.log(data, details);
+          // console.log(data, details);
           setRegion({
             latitude: details.geometry.location.lat,
             longitude: details.geometry.location.lng,
