@@ -1,11 +1,9 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import React, { useState, useEffect } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import config from "./config";
-import Constants from "expo-constants";
 
 // region state, region prop
 // text input
