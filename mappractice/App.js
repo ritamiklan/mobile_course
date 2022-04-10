@@ -57,7 +57,7 @@ export default function App() {
           key: config.MAP_API_KEY,
           language: "en",
           components: "country:fi",
-          location: `${region.latitude}, ${region.longitude}`,
+          location: `${location.latitude}, ${location.longitude}`,
         }}
         styles={{
           container: { flex: 0 },
